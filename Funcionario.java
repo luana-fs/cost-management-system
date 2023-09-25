@@ -4,10 +4,13 @@ public class Funcionario {
 
 	private String nome;
 
-	private String departamento;
+	private Departamento departamento;
 
-	public Funcionario(String matricula, String nome, String departamento) {
-
+	public Funcionario(String matricula, String nome, Departamento departamento)
+	{
+		this.matricula = matricula;
+		this.nome = nome;
+		this.departamento = departamento;
 	}
 
 	public String getMatricula() {
