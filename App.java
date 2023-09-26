@@ -4,13 +4,13 @@ import java.util.Locale;
 public class App {
 
     private static Funcionario funcionarioLogado;
-    private Scanner entrada;
+   
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         Departamento[] departamentos = new Departamento[6];
-        Scanner entrada = new Scanner(System.in);
-        entrada.useLocale(Locale.ENGLISH);
+        
+     
         
         // Estanciando os departamentos
         Departamento rh = new Departamento("RH");
@@ -27,10 +27,13 @@ public class App {
         departamentos[3] = expedicao;
         departamentos[4] = engenharia;
         departamentos[5] = producao;
+        
+        menu();
+        executar();
 
     }
 
-    private void menu() {
+    private static void menu() {
         System.out.println("=====================================");
         System.out.println("Menu de opcoes: ");
         System.out.println("[0] Sair do sistema");
@@ -39,7 +42,10 @@ public class App {
         System.out.println("=====================================");
     }
 
-    public void executar() {
+    public static void executar() {
+        Scanner entrada = new Scanner(System.in);
+        entrada.useLocale(Locale.ENGLISH);
+
         int opcao = 0;
         do {
             menu();
@@ -50,10 +56,10 @@ public class App {
                 case 0:
                     break;
                 case 1:
-                    AcessarComoFuncionario();
+                    // AcessarComoFuncionario();
                     break;
                 case 2:
-                    CadastrarNovoFuncionario();
+                    // CadastrarNovoFuncionario();
                     break;
                 default:
                     System.out.println("Selecione uma opção valida!");
