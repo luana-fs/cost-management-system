@@ -12,4 +12,7 @@ public class Departamento
         return this.nome;
     }
 
+    @Override
+    public String toString() {
+        return "Departamento [nome=" + nome + "]";
 }
