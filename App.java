@@ -15,12 +15,12 @@ public class App {
 		Departamento producao = new Departamento("Produção");
 
 	//Populando o array
-		departamentos[0] = rh;
-		departamentos[1] = compras;
-		departamentos[2] = vendas;
-		departamentos[3] = expedicao;
-		departamentos[4] = engenharia ;
-		departamentos[5] = producao;
+	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, rh));
+	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, compras));
+	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, vendas));
+	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, expedicao));
+	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, engenharia));
+	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, producao));
 		
 
 
