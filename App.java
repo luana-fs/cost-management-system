@@ -40,6 +40,7 @@ public class App {
         System.out.println("[0] Sair do sistema");
         System.out.println("[1] Acessar");
         System.out.println("[2] Cadastrar novo funcionario");
+        System.out.println("[3] Pesquisar registros de custo");
         System.out.println("=====================================");
     }
 
