@@ -13,6 +13,8 @@ public class Departamento
         return this.nome;
     }
 
-    public boolean addFuncionario()
-
+    @Override
+    public String toString() {
+        return "Departamento [nome=" + nome + "]";
+    }
 }
