@@ -22,7 +22,8 @@ public class App {
 	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, engenharia));
 	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, producao));
 		
-
+	App.imprimeDep(departamentos);
+	
 	}
 
 	public static boolean insereDep(Departamento[] dep, Departamento d)
