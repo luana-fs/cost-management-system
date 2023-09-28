@@ -4,14 +4,11 @@ import java.util.Locale;
 public class App {
 
     private static Funcionario funcionarioLogado;
-   
 
     public static void main(String[] args) {
 
         Departamento[] departamentos = new Departamento[6];
-        
-     
-        
+
         // Estanciando os departamentos
         Departamento rh = new Departamento("RH");
         Departamento compras = new Departamento("Compras");
@@ -27,9 +24,13 @@ public class App {
         departamentos[3] = expedicao;
         departamentos[4] = engenharia;
         departamentos[5] = producao;
-        
+
         menu();
         executar();
+
+        // Exemplo de novo cadastro de custo
+        RegistroDeCusto reg1 = new RegistroDeCusto(3559.80, "Notebook", "26/09/2023", "Eletrônicos", "Compras");
+        System.out.println(reg1.toString());
 
     }
 
