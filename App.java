@@ -23,10 +23,6 @@ public class App {
 	System.out.println("O departamento foi cadastrdo com sucesso? " + App.insereDep(departamentos, producao));
 		
 
-
-
-
-
 	}
 
 	public static boolean insereDep(Departamento[] dep, Departamento d)
@@ -41,4 +37,13 @@ public class App {
 		}
 		return false;
 	}
+
+	public static void imprimeDep(Departamento[] dep)
+    {
+        int contador = 1;
+        for(int i = 0; i<dep.length;i++)
+		{
+			System.out.println(contador + ": " + dep[i]);
+            contador++;
+		}
 }
