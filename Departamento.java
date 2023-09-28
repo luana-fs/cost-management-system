@@ -1,6 +1,7 @@
 public class Departamento
 {
     private String nome;
+    private Funcionario[] funcionarios;
 
     public Departamento(String nome)
     {
@@ -15,4 +16,5 @@ public class Departamento
     @Override
     public String toString() {
         return "Departamento [nome=" + nome + "]";
+    }
 }

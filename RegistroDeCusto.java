@@ -1,41 +1,47 @@
+import java.util.Date;
+
 public class RegistroDeCusto {
 
 	private double valor;
-
 	private String descricao;
-
 	private String data;
-
 	private String categoria;
-
 	private String departamento;
 
-	public RegistroDeCusto(double valor, String descricao, String data, String categoria, int departamento) {
-
+	public RegistroDeCusto(double valor, String descricao, String data, String categoria, String departamento) {
+		this.valor = valor;
+		this.descricao = descricao;
+		this.data = (data != null) ? data : new Date().toString();
+		this.categoria = categoria;
+		this.departamento = departamento;
 	}
 
 	public double getValor() {
-		return 0;
+		return this.valor;
 	}
 
 	public String getDescricao() {
-		return null;
+		return this.descricao;
 	}
 
 	public String getData() {
-		return null;
+		return this.data;
 	}
 
 	public String getCategoria() {
-		return null;
+		return this.categoria;
 	}
 
 	public String getDepartamento() {
-		return null;
+		return this.departamento;
 	}
 
 	public String toString() {
-		return null;
+		return "Produto: " + this.getDescricao() + "\n"
+				+ "Valor: R$" + this.getValor() + "\n"
+				+ "Data: " + this.getData() + "\n"
+				+ "Categoria do custo: " + this.getCategoria() + "\n"
+				+ "Departamento: " + this.getDepartamento() + "\n";
 	}
 
 }
