@@ -1,6 +1,7 @@
 public class Departamento
 {
     private String nome;
+    private Funcionario[] funcionarios;
 
     public Departamento(String nome)
     {
@@ -11,5 +12,7 @@ public class Departamento
     {
         return this.nome;
     }
+
+    public boolean addFuncionario()
 
 }
