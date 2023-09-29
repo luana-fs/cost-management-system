@@ -1,6 +1,6 @@
 public class Funcionario {
 
-	private String matricula;
+	private int matricula;
 
 	private String nome;
 
@@ -14,7 +14,7 @@ public class Funcionario {
 	}
 
 	public String getMatricula() {
-		return null;
+		return matricula;
 	}
 
 	public void setMatricula(int matricula) {
@@ -22,14 +22,14 @@ public class Funcionario {
 	}
 
 	public String getNome() {
-		return null;
+		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome
 	}
 
-	public String getDepartamento() {
+	public String getDepartamento(String departamento) {
 		return departamento;
 	}
 
