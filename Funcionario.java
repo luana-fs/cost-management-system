@@ -6,8 +6,7 @@ public class Funcionario {
 
 	private String departamento;
 
-	public Funcionario(int matricula, String nome, String departamento)
-	{
+	public Funcionario(int matricula, String nome, String departamento) {
 		this.matricula = matricula;
 		this.nome = nome;
 		this.departamento = departamento;

@@ -1,17 +1,16 @@
-import java.util.Scanner;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class App {
 
     private static Funcionario funcionarioLogado;
+    private static Departamento[] departamentos = new Departamento[6];
     private static RegistroDeCusto registroDeCusto;
-    static Scanner entrada = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        Departamento[] departamentos = new Departamento[6];
-        registroDeCusto = new RegistroDeCusto(14.99, "notebook", "22/08/23", "saasas", "Compras");
+        Cadastro cadastro = new Cadastro();
 
         RegistroDeCusto r1 = new RegistroDeCusto(100.0, "Material de Escritório", "2023-02-04", "Suprimentos",
                 "Engenharia");
@@ -23,40 +22,78 @@ public class App {
         registroDeCusto.adicionarRegistroDeCusto(r1);
         registroDeCusto.adicionarRegistroDeCusto(r2);
         registroDeCusto.adicionarRegistroDeCusto(r3);
+        
+        // Preenche Funcionários
+        cadastro.cadastraFuncionario(new Funcionario(1, "Joao", "RH"));
+        cadastro.cadastraFuncionario(new Funcionario(2, "Lucca", "Compras"));
+        cadastro.cadastraFuncionario(new Funcionario(3, "Alberto", "Vendas"));
 
-        // Estanciando os departamentos
+        // Funcionários disponíveis
+        System.out.println("Funcionários Disponíveis:");
+        cadastro.imprimeFuncionarios();
+
+        // Escolha de Usuario
+        Scanner scanner = new Scanner(System.in);
+        int indiceFuncionarioSelecionado;
+
+        do {
+            System.out.print("Digite o índice do Funcionário para fazer login (0 a "
+                    + (cadastro.getNumeroFuncionarios() - 1) + "): ");
+            indiceFuncionarioSelecionado = scanner.nextInt();
+            scanner.nextLine(); // Consumir o caractere de nova linha
+        } while (indiceFuncionarioSelecionado < 0 || indiceFuncionarioSelecionado >= cadastro.getNumeroFuncionarios());
+
+        funcionarioLogado = cadastro.getFuncionario(indiceFuncionarioSelecionado);
+        System.out.println("Logado como: " + funcionarioLogado.getNome());
+
+        // Menu
+        Menu.exibirMenu();
+        int opcao;
+        do {
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcao) {
+                case 1:
+                    // Lógica para Registrar Novo Custo
+                    break;
+                case 2:
+                    // Lógica para Mostrar Estatísticas
+                    break;
+                case 3:
+                    Menu.menuPesquisa();
+
+                    break;
+                // Adicione mais casos para as outras opções do menu
+                case 0:
+                    System.out.println("Saindo do Sistema.");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    Menu.exibirMenu();
+                    break;
+            }
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+
+    public static void populaDep() {
+
         Departamento rh = new Departamento("RH");
         Departamento compras = new Departamento("Compras");
         Departamento vendas = new Departamento("Vendas");
         Departamento expedicao = new Departamento("Expedição");
         Departamento engenharia = new Departamento("Engenharia");
         Departamento producao = new Departamento("Produção");
-
-        // Populando o array
-        App.insereDep(departamentos, rh);
-        App.insereDep(departamentos, compras);
-        App.insereDep(departamentos, vendas);
-        App.insereDep(departamentos, expedicao);
-        App.insereDep(departamentos, engenharia);
-        App.insereDep(departamentos, producao);
-
-        App.imprimeDep(departamentos);
-
-        menu();
-        executar();
-
-        // // Exemplo de novo cadastro de custo
-        // RegistroDeCusto reg1 = new RegistroDeCusto(3559.80, "Notebook", "26/09/2023",
-        // "Eletrônicos", "Compras");
-        // System.out.println(reg1.toString());
-
     }
 
+    // Populando o array
     public static boolean insereDep(Departamento[] dep, Departamento d) {
         for (int i = 0; i < dep.length; i++) {
             if (dep[i] == null) {
                 dep[i] = d;
                 return true;
+
             }
         }
         return false;
@@ -70,131 +107,6 @@ public class App {
         }
     }
 
-    private static void cadastrarNovoFuncionario() {
-        System.out.println("=====================================");
-        System.out.println("Cadastrar um funcionario");
-        System.out.print("Digite seu numero de matricula: ");
-        int matricula = entrada.nextInt();
-        System.out.print("Informe seu nome: ");
-        String nome = entrada.nextLine();
-        System.out.print("Informe seu departamento: ");
-        String departamento = entrada.nextLine();
-        Funcionario f = new Funcionario(matricula, nome, departamento);
-        if (Cadastro.cadastraFuncionario(f))
-            System.out.println("Funcionario cadastrado com sucesso.");
-        else
-            System.out.println("Erro: Funcionario não cadastrado.");
-    }
-
-    private static boolean startupMenu() {
-        try (Scanner entrada = new Scanner(System.in)) {
-            int opcao = 0;
-            System.out.println("=====================================");
-            System.out.print("Olá! Seja bem vindo ao sistema de controle de custos da empresa!");
-            System.out.println("Selecione a forma de acesso:");
-            while (opcao != 1 && opcao != 2) {
-                System.out.println("[1] Funcionário");
-                System.out.println("[2] Administrador");
-                System.out.println("=====================================");
-                opcao = entrada.nextInt();
-                entrada.nextLine();
-                switch (opcao) {
-                    case 1:
-                        // AcessarComoFuncionario();
-                        break;
-                    case 2:
-                        cadastrarNovoFuncionario();
-                        break;
-                    default:
-                        System.out.println("Selecione uma opção valida!");
-                }
-            }
-        }
-        return true;
-    }
-
-    private static void menu() {
-        System.out.println("=====================================");
-        System.out.println("Menu de opcoes: ");
-        System.out.println("[1] Registrar novo custo");
-        System.out.println("[2] Mostrar estatísticas");
-        System.out.println("[3] Pesquisar custo");
-        System.out.println("[4] Visualizar dados pessoais");
-        System.out.println("[5] Visualizar custos do mês");
-        System.out.println("[6] Vizualizar custos dos últimos 3 meses");
-        System.out.println("[7] Top 3 funcionários com maiores registros");
-        System.out.println("[0] Sair do sistema");
-        System.out.println("=====================================");
-    }
-
-    public static void executar() {
-        int opcao = entrada.nextInt();
-        do {
-            menu();
-            System.out.print("Digite uma opção válida:");
-            entrada.nextLine();
-            switch (opcao) {
-                case 0:
-                    opcao = 0;
-                    break;
-                case 1:
-                    // RegistrarNovoCusto();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 2:
-                    // MostrarEstatisticas();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 3:
-                    // PesquisarCusto();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 4:
-                    // VerDadosFuncionarioLogado();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 5:
-                    // VerCustosMes();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 6:
-                    // VerCustosTresMeses();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 7:
-                    // RankingFuncionarios();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                default:
-                    System.out.println("Selecione uma opção válida, por favor!");
-            }
-        } while (opcao != 0);
-    }
-
-    private static void menuPesquisa() {
-        System.out.println("=====================================");
-        System.out.println("Menu de Pesquisa: ");
-        System.out.println("[1] Pesquisar por Descrição");
-        System.out.println("[2] Pesquisar por Categoria");
-        System.out.println("[3] Pesquisar por Data");
-        System.out.println("[4] Pesquisar por Departamento");
-        System.out.println("[0] Voltar ao menu principal");
-        System.out.println("=====================================");
-    }
 
     private static void executarPesquisa(String opcao) {
         Scanner entrada = new Scanner(System.in);
@@ -236,7 +148,9 @@ public class App {
             case "4":
                 System.out.print("Digite o departamento o departamento: ");
                 String departamento = entrada.nextLine();
-                List<RegistroDeCusto> resultadoDepartamento = registroDeCusto.pesquisarDepartamento(departamento);
+
+                List<RegistroDeCusto> resultadoDepartamento = (List<RegistroDeCusto>) registroDeCusto.pesquisarDepartamento(departamento);
+                
                 if (resultadoDepartamento != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoDepartamento.toString());
                 } else {
