@@ -123,6 +123,7 @@ public class App {
         System.out.println("[5] Visualizar custos do mês");
         System.out.println("[6] Vizualizar custos dos últimos 3 meses");
         System.out.println("[7] Top 3 funcionários com maiores registros");
+        System.out.println("[8] Dia com o maior custo";)
         System.out.println("[0] Sair do sistema");
         System.out.println("=====================================");
     }
@@ -175,6 +176,12 @@ public class App {
                     break;
                 case 7:
                     // RankingFuncionarios();
+                    menu();
+                    opcao = entrada.nextInt();
+                    entrada.nextLine();
+                    break;
+                case 8:
+                    // diaComMaisCustos();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
@@ -242,7 +249,7 @@ public class App {
                 } else {
                     System.out.println("Nenhum resultado encontrado.");
                 }
-                break;
+                break;    
             default:
                 System.out.println("Selecione uma opção válida.");
         }
