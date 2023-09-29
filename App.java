@@ -9,7 +9,7 @@ public class App {
 
   Departamento[] departamentos = new Departamento[6];
 
-  // Estanciando os departamentos
+  //Estanciando os departamentos
   Departamento rh = new Departamento("RH");
   Departamento compras = new Departamento("Compras");
   Departamento vendas = new Departamento("Vendas");
@@ -65,6 +65,22 @@ public class App {
         RegistroDeCusto reg1 = new RegistroDeCusto(3559.80, "Notebook", "26/09/2023", "Eletrônicos", "Compras");
         System.out.println(reg1.toString());
 
+    }
+  
+    private void cadastrarNovoFuncionario() {
+        System.out.println("=====================================");
+        System.out.println("Cadastrar um funcionario");
+	    System.out.print("Digite seu numero de matricula: ");
+        int matricula = entrada.nextInt();
+        System.out.print("Informe seu nome: ");
+        String nome = entrada.nextLine();
+	    System.out.print("Informe seu departamento: ");
+        String departamento = entrada.nextLine();
+        Funcionario f = new Funcionario(matricula, nome, departamento );
+        if(cadastro.cadastraFuncionario(f))
+            System.out.println("Funcionario cadastrado com sucesso.");
+        else
+            System.out.println("Erro: Funcionario não cadastrado.");
     }
 
     private static boolean startupMenu() {
@@ -125,43 +141,43 @@ public class App {
                 case 0: opcao = 0;
                     break;
                 case 1:
-                    // AcessarComoFuncionario();
+                    // RegistrarNovoCusto();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 2:
-                    // CadastrarNovoFuncionario();
+                    // MostrarEstatisticas();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 3: 
-                    // CadastrarNovoFuncionario();
+                    // PesquisarCusto();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 4:
-                    // CadastrarNovoFuncionario();
+                    // VerDadosFuncionarioLogado();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 5:
-                    // CadastrarNovoFuncionario();
+                    // VerCustosMes();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 6:
-                    // CadastrarNovoFuncionario();
+                    // VerCustosTresMeses();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 7:
-                    // CadastrarNovoFuncionario();
+                    // RankingFuncionarios();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
