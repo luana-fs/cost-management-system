@@ -84,7 +84,8 @@ public class App {
         int opcao = 0;
         do {
             menu();
-            System.out.print("Insira a opção desejada:");
+            System.out.print("Escolha uma opção válida!");
+            System.out.print("Digite a opção escolhida:")
             opcao = entrada.nextInt();
             entrada.nextLine();
             switch (opcao) {
