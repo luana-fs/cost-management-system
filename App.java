@@ -247,5 +247,48 @@ public class App {
                 System.out.println("Selecione uma opção válida.");
         }
     }
+    public void percentualCustoPorDep(){
+         int percentualRh;
+        int percentualCompra;
+        int percentualVenda;
+        int percentualExpedicao;
+        int percentualEngenharia;
+        int percentualProducao;
+        int contRh;
+        int contCompra;
+        int contVenda;
+        int contExpedicao;
+        int contEngenharia;
+        int contProducao;
+        for(int i=0; i<departamentos.length; i++){
+            if(departamentos[i].getNome == "RH"){
+                contRh += 1;
+            }
+            if(departamentos[i].getNome == "Compra"){
+                contCompra += 1;
+            }
+            if(departamentos[i].getNome == "Venda"){
+                contVenda += 1;
+            }
+            if(departamentos[i].getNome == "Expedição"){
+                contExpedicao += 1;
+            }
+            if(departamentos[i].getNome == "Engenharia"){
+                contEngenharia += 1;
+            }
+            if(departamentos[i].getNome == "Produção"){
+                contProducao += 1;
+            }
+        }
+        percentualRh = (contRh*departamentos.length)/100; 
+        percentualCompra = (contCompra*departamentos.length)/100;
+        percentualVenda = (contVenda*departamentos.length)/100;
+        percentualExpedicao = (contExpedicao*departamentos.length)/100;
+        percentualProducao = (contProducao*departamentos.length)/100;
+        percentualEngenharia = (contEngenharia*departamentos.length)/100;
+
+      System.out.println("RH: "+ percentualRh +"% "+"Compra: "+percentualCompra+"% "+"Venda: "+percentualVenda+"% "+"Expedição: "+percentualExpedicao+"% "+"Engenharia: "+percentualEngenharia+"% "+"Produção: "+percentualProducao+"% ");
+
+    }
 
 }
