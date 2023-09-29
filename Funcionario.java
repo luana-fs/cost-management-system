@@ -4,9 +4,9 @@ public class Funcionario {
 
 	private String nome;
 
-	private Departamento departamento;
+	private String departamento;
 
-	public Funcionario(String matricula, String nome, Departamento departamento)
+	public Funcionario(int matricula, String nome, String departamento)
 	{
 		this.matricula = matricula;
 		this.nome = nome;
@@ -17,8 +17,8 @@ public class Funcionario {
 		return null;
 	}
 
-	public void setMatricula(String matricula) {
-
+	public void setMatricula(int matricula) {
+		this.matricula = matricula
 	}
 
 	public String getNome() {
@@ -26,19 +26,15 @@ public class Funcionario {
 	}
 
 	public void setNome(String nome) {
-
+		this.nome = nome
 	}
 
-	public String getDepartamentoFuncionario() {
-		return null;
+	public String getDepartamento() {
+		return departamento;
 	}
 
-	public void setDepartamentoFuncionario() {
-
-	}
-
-	public String toString() {
-		return null;
+	public void setDepartamento() {
+		this.departamento = departamento
 	}
 
 }
