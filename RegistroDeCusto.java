@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.List;
 import java.util.ArrayList;
 
 public class RegistroDeCusto {
@@ -20,8 +21,8 @@ public class RegistroDeCusto {
 	}
 	
     public void adicionarRegistroDeCusto(RegistroDeCusto registro) {
-    registrosDeCusto.add(registro);
-}
+		registrosDeCusto.add(registro);
+	}
 
 	public double getValor() {
 		return this.valor;
@@ -53,14 +54,12 @@ public class RegistroDeCusto {
 
     public RegistroDeCusto pesquisaDescricao(String descricao){ 
         int i;
+		RegistroDeCusto reg = null;
         for(i=0; i< registrosDeCusto.size();i++){
-        RegistroDeCusto reg = registrosDeCusto.get(i);
-           if(reg.getDescricao().equalsIgnoreCase(descricao)){
-                return reg;
-
-        }
-
-
-}
-  
+			if(registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao)){
+        		reg = registrosDeCusto.get(i);
+			}
+		}
+		return reg;
+	}
 }
