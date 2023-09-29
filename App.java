@@ -101,4 +101,19 @@ public class App {
             }
         } while (opcao != 0);
     }
+    private void cadastrarNovoFuncionario() {
+        System.out.println("=====================================");
+        System.out.println("Cadastrar um funcionario");
+	System.out.print("Digite seu numero de matricula: ");
+        double valor = entrada.nextInt();
+        System.out.print("Informe seu nome: ");
+        String modelo = entrada.nextLine();
+	System.out.print("Informe seu nome: ");
+        String modelo = entrada.nextLine();
+        Funcionario f = new Funcionario(matricula, nome, departamento );
+        if(cadastro.cadastraFuncionario(f))
+            System.out.println("Funcionario cadastrado com sucesso.");
+        else
+            System.out.println("Erro: Funcionario não cadastrado.");
+    }
 }
