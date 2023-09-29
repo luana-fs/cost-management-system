@@ -98,7 +98,7 @@ public class App {
                     // CadastrarNovoFuncionario();
                     break;
                 default:
-                    System.out.println("Selecione uma opção valida!");
+                    System.out.println("Selecione uma opção válida!");
             }
         } while (opcao != 0);
     }
