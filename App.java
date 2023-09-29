@@ -41,7 +41,8 @@ public class App {
         App.insereDep(departamentos, producao);
 
         App.imprimeDep(departamentos);
-
+        
+       // startupMenu()
         menu();
         executar();
 
@@ -94,7 +95,7 @@ public class App {
             System.out.println("Selecione a forma de acesso:");
             while (opcao != 1 && opcao != 2) {
                 System.out.println("[1] Funcionário");
-                System.out.println("[2] Administrador");
+               // System.out.println("[2] Administrador");
                 System.out.println("=====================================");
                 opcao = entrada.nextInt();
                 entrada.nextLine();
@@ -123,6 +124,7 @@ public class App {
         System.out.println("[5] Visualizar custos do mês");
         System.out.println("[6] Vizualizar custos dos últimos 3 meses");
         System.out.println("[7] Top 3 funcionários com maiores registros");
+        System.out.println("[8] Percentual de custos por Departamento:");
         System.out.println("[0] Sair do sistema");
         System.out.println("=====================================");
     }
@@ -138,25 +140,25 @@ public class App {
                     opcao = 0;
                     break;
                 case 1:
-                    // RegistrarNovoCusto();
+                     RegistrarNovoCusto();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 2:
-                    // MostrarEstatisticas();
+                     MostrarEstatisticas();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 3:
-                    // PesquisarCusto();
+                     PesquisarCusto();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 4:
-                    // VerDadosFuncionarioLogado();
+                    VerDadosFuncionarioLogado();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
@@ -179,6 +181,13 @@ public class App {
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
+                    case 8:
+                        percentualCustoPorDep();
+                        menu();
+                    opcao = entrada.nextInt();
+                    entrada.nextLine();
+                    break;
+
                 default:
                     System.out.println("Selecione uma opção válida, por favor!");
             }
