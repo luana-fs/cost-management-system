@@ -247,5 +247,7 @@ public class App {
                 System.out.println("Selecione uma opção válida.");
         }
     }
+    public void percentualCustoPorDep(){
+    }
 
 }
