@@ -72,7 +72,7 @@ public class App {
         System.out.println("Menu de opcoes: ");
         System.out.println("[0] Sair do sistema");
         System.out.println("[1] Acessar");
-        System.out.println("[2] Adicionar novo funcionário");
+        System.out.println("[2] Registrar novo colaborador");
         System.out.println("[3] Pesquisar registros de custo");
         System.out.println("=====================================");
     }
