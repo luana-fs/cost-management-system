@@ -1,6 +1,6 @@
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RegistroDeCusto {
 
@@ -10,7 +10,7 @@ public class RegistroDeCusto {
 	private String categoria;
 	private String departamento;
 
-    private List<RegistroDeCusto> registrosDeCusto = new ArrayList<>();
+	private List<RegistroDeCusto> registrosDeCusto = new ArrayList<>();
 
 	public RegistroDeCusto(double valor, String descricao, String data, String categoria, String departamento) {
 		this.valor = valor;
@@ -19,8 +19,8 @@ public class RegistroDeCusto {
 		this.categoria = categoria;
 		this.departamento = departamento;
 	}
-	
-    public void adicionarRegistroDeCusto(RegistroDeCusto registro) {
+
+	public void adicionarRegistroDeCusto(RegistroDeCusto registro) {
 		registrosDeCusto.add(registro);
 	}
 
@@ -52,14 +52,58 @@ public class RegistroDeCusto {
 				+ "Departamento: " + this.getDepartamento() + "\n";
 	}
 
-    public RegistroDeCusto pesquisaDescricao(String descricao){ 
-        int i;
-		RegistroDeCusto reg = null;
-        for(i=0; i< registrosDeCusto.size();i++){
-			if(registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao)){
-        		reg = registrosDeCusto.get(i);
+	public RegistroDeCusto pesquisaDescricao(String descricao) {
+		int i;
+		List<RegistroDeCusto> resultados = new ArrayList<>();
+		for (i = 0; i < registrosDeCusto.size(); i++) {
+			RegistroDeCusto reg = registrosDeCusto.get(i);
+			if (reg.getDescricao().equalsIgnoreCase(descricao)) {
+				resultados.add(reg);
+
 			}
 		}
+		return (RegistroDeCusto) resultados;
+	}
+
+	public RegistroDeCusto pesquisarCategoria(String categoria) {
+		int i;
+		List<RegistroDeCusto> resultados = new ArrayList<>();
+		for (i = 0; i < registrosDeCusto.size(); i++) {
+			RegistroDeCusto reg = registrosDeCusto.get(i);
+			if (reg.getCategoria().equalsIgnoreCase(categoria)) {
+				resultados.add(reg);
+			}
+
+		}
+		return (RegistroDeCusto) resultados;
+	}
+
+	public RegistroDeCusto pesquisarData(String data) {
+		int i;
+		List<RegistroDeCusto> resultados = new ArrayList<>();
+		for (i = 0; i < registrosDeCusto.size(); i++) {
+			RegistroDeCusto reg = registrosDeCusto.get(i);
+			if (reg.getData().equals(data)) {
+				resultados.add(reg);
+			}
+		}
+		return (RegistroDeCusto) resultados;
+	}
+
+	public RegistroDeCusto pesquisarDepartamento(String departamento){
+		int i;
+		List<RegistroDeCusto> resultados = new ArrayList<>();
+		for(i=0; i< registrosDeCusto.size();i++){
+			RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getDepartamento().equals(departamento)){
+                 resultados.add(reg);
+	  }
+}
+    return (RegistroDeCusto) resultados;
+	}
+
+	if(registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao)){
+		reg = registrosDeCusto.get(i);
 		return reg;
 	}
 }
