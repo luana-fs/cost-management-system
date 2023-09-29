@@ -59,8 +59,20 @@ public class RegistroDeCusto {
                 return reg;
 
         }
+		}
+		return null;
+		}
 
+      public RegistroDeCusto pesquisarCategoria(String categoria){
+		int i;
+		for(i=0; i< registrosDeCusto.size();i++){
+        RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getCategoria().equalsIgnoreCase(categoria)){
+                return reg;
+	  }
 
 }
+    return null;
+	  }
   
 }
