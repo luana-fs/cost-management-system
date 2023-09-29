@@ -1,17 +1,16 @@
-import java.util.Scanner;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class App {
 
     private static Funcionario funcionarioLogado;
+    private static Departamento[] departamentos = new Departamento[6];
     private static RegistroDeCusto registroDeCusto;
-    static Scanner entrada = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        Departamento[] departamentos = new Departamento[6];
-        registroDeCusto = new RegistroDeCusto(14.99, "notebook", "22/08/23", "saasas", "Compras");
+        Cadastro cadastro = new Cadastro();
 
         RegistroDeCusto r1 = new RegistroDeCusto(100.0, "Material de Escritório", "2023-02-04", "Suprimentos",
                 "Engenharia");
@@ -23,40 +22,78 @@ public class App {
         registroDeCusto.adicionarRegistroDeCusto(r1);
         registroDeCusto.adicionarRegistroDeCusto(r2);
         registroDeCusto.adicionarRegistroDeCusto(r3);
+        
+        // Preenche Funcionários
+        cadastro.cadastraFuncionario(new Funcionario(1, "Joao", "RH"));
+        cadastro.cadastraFuncionario(new Funcionario(2, "Lucca", "Compras"));
+        cadastro.cadastraFuncionario(new Funcionario(3, "Alberto", "Vendas"));
 
-        // Estanciando os departamentos
+        // Funcionários disponíveis
+        System.out.println("Funcionários Disponíveis:");
+        cadastro.imprimeFuncionarios();
+
+        // Escolha de Usuario
+        Scanner scanner = new Scanner(System.in);
+        int indiceFuncionarioSelecionado;
+
+        do {
+            System.out.print("Digite o índice do Funcionário para fazer login (0 a "
+                    + (cadastro.getNumeroFuncionarios() - 1) + "): ");
+            indiceFuncionarioSelecionado = scanner.nextInt();
+            scanner.nextLine(); // Consumir o caractere de nova linha
+        } while (indiceFuncionarioSelecionado < 0 || indiceFuncionarioSelecionado >= cadastro.getNumeroFuncionarios());
+
+        funcionarioLogado = cadastro.getFuncionario(indiceFuncionarioSelecionado);
+        System.out.println("Logado como: " + funcionarioLogado.getNome());
+
+        // Menu
+        Menu.exibirMenu();
+        int opcao;
+        do {
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcao) {
+                case 1:
+                    // Lógica para Registrar Novo Custo
+                    break;
+                case 2:
+                    // Lógica para Mostrar Estatísticas
+                    break;
+                case 3:
+                    Menu.menuPesquisa();
+
+                    break;
+                // Adicione mais casos para as outras opções do menu
+                case 0:
+                    System.out.println("Saindo do Sistema.");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    Menu.exibirMenu();
+                    break;
+            }
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+
+    public static void populaDep() {
+
         Departamento rh = new Departamento("RH");
         Departamento compras = new Departamento("Compras");
         Departamento vendas = new Departamento("Vendas");
         Departamento expedicao = new Departamento("Expedição");
         Departamento engenharia = new Departamento("Engenharia");
         Departamento producao = new Departamento("Produção");
-
-        // Populando o array
-        App.insereDep(departamentos, rh);
-        App.insereDep(departamentos, compras);
-        App.insereDep(departamentos, vendas);
-        App.insereDep(departamentos, expedicao);
-        App.insereDep(departamentos, engenharia);
-        App.insereDep(departamentos, producao);
-
-        App.imprimeDep(departamentos);
-
-        menu();
-        executar();
-
-        // // Exemplo de novo cadastro de custo
-        // RegistroDeCusto reg1 = new RegistroDeCusto(3559.80, "Notebook", "26/09/2023",
-        // "Eletrônicos", "Compras");
-        // System.out.println(reg1.toString());
-
     }
 
+    // Populando o array
     public static boolean insereDep(Departamento[] dep, Departamento d) {
         for (int i = 0; i < dep.length; i++) {
             if (dep[i] == null) {
                 dep[i] = d;
                 return true;
+
             }
         }
         return false;
@@ -69,6 +106,7 @@ public class App {
             contador++;
         }
     }
+
 
     private static void cadastrarNovoFuncionario() {
         System.out.println("=====================================");
@@ -203,6 +241,8 @@ public class App {
         System.out.println("=====================================");
     }
 
+
+
     private static void executarPesquisa(String opcao) {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.ENGLISH);
@@ -243,7 +283,9 @@ public class App {
             case "4":
                 System.out.print("Digite o departamento o departamento: ");
                 String departamento = entrada.nextLine();
-                List<RegistroDeCusto> resultadoDepartamento = registroDeCusto.pesquisarDepartamento(departamento);
+
+                List<RegistroDeCusto> resultadoDepartamento = (List<RegistroDeCusto>) registroDeCusto.pesquisarDepartamento(departamento);
+                
                 if (resultadoDepartamento != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoDepartamento.toString());
                 } else {
