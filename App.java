@@ -4,20 +4,10 @@ import java.util.Locale;
 public class App {
 
   private static Funcionario funcionarioLogado;
-  private static RegistroDeCusto registroDeCusto;
 
   public static void main(String[] args) {
 
   Departamento[] departamentos = new Departamento[6];
-  registroDeCusto = new RegistroDeCusto(); 
-
-  RegistroDeCusto r1 = new RegistroDeCusto(100.0, "Material de Escritório", "2023-02-04", "Suprimentos", "Engenharia");
-  RegistroDeCusto r2 = new RegistroDeCusto(200.0, "Manutenção de Equipamento", "2022-09-20", "Manutenção", "Engenharia");
-  RegistroDeCusto r3 = new RegistroDeCusto(500.0, "Manutenção de Equipamento", "2023-08-27", "Manutenção", "Engenharia");
-
-    registroDeCusto.adicionarRegistroDeCusto(r1);
-    registroDeCusto.adicionarRegistroDeCusto(r2);
-    registroDeCusto.adicionarRegistroDeCusto(r3);
 
   //Estanciando os departamentos
   Departamento rh = new Departamento("RH");
@@ -126,7 +116,16 @@ public class App {
     }
 
     public static void executar() {
-     do {
+        try (Scanner entrada = new Scanner(System.in)) {
+            entrada.useLocale(Locale.ENGLISH);
+            boolean logado = false;
+            int opcao = 0;
+
+            while (logado == false) {
+                logado = startupMenu();
+            }
+
+            do {
                 menu();
                 System.out.print("Digite uma opção válida:");
                 opcao = entrada.nextInt();
@@ -182,67 +181,4 @@ public class App {
             } while (opcao != 0);
         }
     }
-    private static void menuPesquisa() {
-        System.out.println("=====================================");
-        System.out.println("Menu de Pesquisa: ");
-        System.out.println("[1] Pesquisar por Descrição");
-        System.out.println("[2] Pesquisar por Categoria");
-        System.out.println("[3] Pesquisar por Data");
-        System.out.println("[4] Pesquisar por Departamento");
-        System.out.println("[0] Voltar ao menu principal");
-        System.out.println("=====================================");
-    }
-
-    private static void executarPesquisa(String opcao) {
-        Scanner entrada = new Scanner(System.in);
-        entrada.useLocale(Locale.ENGLISH);
-
-        switch (opcao) {
-            case "0":
-                break;
-            case "1":
-                System.out.print("Digite a descrição que deseja pesquisar: ");
-                String descricao = entrada.nextLine();
-                RegistroDeCusto resultadoDescricao = registroDeCusto.pesquisaDescricao(descricao);
-                if (resultadoDescricao != null) {
-                    System.out.println("Resultado da pesquisa:\n" + resultadoDescricao.toString());
-                } else {
-                    System.out.println("Nenhum resultado encontrado.");
-                }
-                break;
-            case "2":
-                System.out.print("Digite a categoria que deseja pesquisar: ");
-                String categoria = entrada.nextLine();
-                RegistroDeCusto resultadoCategoria = registroDeCusto.pesquisarCategoria(categoria);
-                if (resultadoCategoria != null) {
-                    System.out.println("Resultado da pesquisa:\n" + resultadoCategoria.toString());
-                } else {
-                    System.out.println("Nenhum resultado encontrado.");
-                }
-                break;
-            case "3":
-                System.out.print("Digite a data que deseja pesquisar: ");
-                String data = entrada.nextLine();
-                RegistroDeCusto resultadoData = registroDeCusto.pesquisarData(data);
-                if (resultadoData != null) {
-                    System.out.println("Resultado da pesquisa:\n" + resultadoData.toString());
-                } else {
-                    System.out.println("Nenhum resultado encontrado.");
-                }
-                break;
-            case "4":
-                System.out.print("Digite o departamento o departamento: ");
-                String departamento = entrada.nextLine();
-                RegistroDeCusto resultadoDepartamento = registroDeCusto.pesquisarDepartamento(departamento);
-                if (resultadoDepartamento != null) {
-                    System.out.println("Resultado da pesquisa:\n" + resultadoDepartamento.toString());
-                } else {
-                    System.out.println("Nenhum resultado encontrado.");
-                }
-                break;
-            default:
-                System.out.println("Selecione uma opção válida.");
-        }
-    }
-
 }
