@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.ArrayList;
 
 public class RegistroDeCusto {
 
@@ -7,6 +8,8 @@ public class RegistroDeCusto {
 	private String data;
 	private String categoria;
 	private String departamento;
+
+   private List<Registro> registrosDeCusto = new ArrayList<>();
 
 	public RegistroDeCusto(double valor, String descricao, String data, String categoria, String departamento) {
 		this.valor = valor;
@@ -43,5 +46,21 @@ public class RegistroDeCusto {
 				+ "Categoria do custo: " + this.getCategoria() + "\n"
 				+ "Departamento: " + this.getDepartamento() + "\n";
 	}
+
+    public Registro pesquisaDescricao(String descricao){ 
+        int i;
+
+        for(i=0; i< registrosDeCusto.size();i++){
+
+            Registro reg = registrosDeCusto.get(i);
+
+            if(reg.getDescricao.equals(descricao)){
+
+                return reg;
+
+            }
+
+        }
+
 
 }

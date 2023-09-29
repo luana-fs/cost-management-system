@@ -9,7 +9,7 @@ public class App {
 
   Departamento[] departamentos = new Departamento[6];
 
-  // Estanciando os departamentos
+  //Estanciando os departamentos
   Departamento rh = new Departamento("RH");
   Departamento compras = new Departamento("Compras");
   Departamento vendas = new Departamento("Vendas");
