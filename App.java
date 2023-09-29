@@ -1,12 +1,14 @@
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.*;
 
 public class App {
 
     private static Funcionario funcionarioLogado;
     private static Departamento[] departamentos = new Departamento[6];
-    private static RegistroDeCusto registroDeCusto;
+    private static RegistroDeCusto registroDeCusto = new RegistroDeCusto();
+    private static Cadastro cadastro = new Cadastro();
 
     public static void main(String[] args) {
 
@@ -109,6 +111,7 @@ public class App {
 
 
     private static void cadastrarNovoFuncionario() {
+         Scanner entrada = new Scanner(System.in);
         System.out.println("=====================================");
         System.out.println("Cadastrar um funcionario");
         System.out.print("Digite seu numero de matricula: ");
@@ -167,6 +170,7 @@ public class App {
     }
 
     public static void executar() {
+         Scanner entrada = new Scanner(System.in);
         int opcao = entrada.nextInt();
         do {
             menu();
@@ -303,29 +307,29 @@ public class App {
         int percentualExpedicao;
         int percentualEngenharia;
         int percentualProducao;
-        int contRh;
-        int contCompra;
-        int contVenda;
-        int contExpedicao;
-        int contEngenharia;
-        int contProducao;
+        int contRh =0;
+        int contCompra=0;
+        int contVenda=0;
+        int contExpedicao=0;
+        int contEngenharia=0;
+        int contProducao=0;
         for(int i=0; i<departamentos.length; i++){
-            if(departamentos[i].getNome == "RH"){
+            if(departamentos[i].getNome() == "RH"){
                 contRh += 1;
             }
-            if(departamentos[i].getNome == "Compra"){
+            if(departamentos[i].getNome() == "Compra"){
                 contCompra += 1;
             }
-            if(departamentos[i].getNome == "Venda"){
+            if(departamentos[i].getNome() == "Venda"){
                 contVenda += 1;
             }
-            if(departamentos[i].getNome == "Expedição"){
+            if(departamentos[i].getNome() == "Expedição"){
                 contExpedicao += 1;
             }
-            if(departamentos[i].getNome == "Engenharia"){
+            if(departamentos[i].getNome() == "Engenharia"){
                 contEngenharia += 1;
             }
-            if(departamentos[i].getNome == "Produção"){
+            if(departamentos[i].getNome() == "Produção"){
                 contProducao += 1;
             }
         }
@@ -365,10 +369,10 @@ public class App {
     }
 public static int encontrarMesComMaiorCusto(double[] registroDeCusto) {
         
-       
-if (registroDeCusto.length == 0)
+       int mesComMaiorCusto;
+if (registroDeCusto.length == 0){
 
-        int mesComMaiorCusto = 0;
+mesComMaiorCusto = 0;
         double maiorCusto = registroDeCusto[0];
 
         for (int i = 1; i < registroDeCusto.length; i++) {
@@ -376,14 +380,15 @@ if (registroDeCusto.length == 0)
                 maiorCusto = registroDeCusto[i];
                 mesComMaiorCusto = i;
             }
-        }
+        
                 maiorCusto = registroDeCusto[i];
                 mesComMaiorCusto = i;
 
                 maiorCusto = registroDeCusto[i];
-            
-return mesComMaiorCusto;
-    }
-}
+        }
+
+    }return mesComMaiorCusto;
 
 }
+}
+

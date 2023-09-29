@@ -18,8 +18,11 @@ public class RegistroDeCusto {
 		this.data = (data != null) ? data : new Date().toString();
 		this.categoria = categoria;
 		this.departamento = departamento;
-	}
+	}  
+     
+	 public RegistroDeCusto(){
 
+    }
 	public void adicionarRegistroDeCusto(RegistroDeCusto registro) {
 		registrosDeCusto.add(registro);
 	}
