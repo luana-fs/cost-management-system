@@ -83,5 +83,17 @@ public class RegistroDeCusto {
         }
     return null;
 	  }
+	  public RegistroDeCusto pesquisarDepartamento(String departamento){
+		int i;
+		for(i=0; i< registrosDeCusto.size();i++){
+        RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getDepartamento().equals(departamento)){
+                return reg;
+	  }
+}
+    return null;
+	  }
+
   
 }
+  
