@@ -62,7 +62,6 @@ public class RegistroDeCusto {
 		}
 		return null;
 		}
-
       public RegistroDeCusto pesquisarCategoria(String categoria){
 		int i;
 		for(i=0; i< registrosDeCusto.size();i++){
@@ -72,6 +71,16 @@ public class RegistroDeCusto {
 	  }
 
 }
+    return null;
+	  }
+	  public RegistroDeCusto pesquisarData(String data){
+		int i;
+		for(i=0; i< registrosDeCusto.size();i++){
+        RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getData().equals(data)){
+                return reg;
+	  }
+        }
     return null;
 	  }
   
