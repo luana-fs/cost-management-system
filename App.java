@@ -67,7 +67,7 @@ public class App {
 
     }
   
-    private void cadastrarNovoFuncionario() {
+    private static void cadastrarNovoFuncionario() {
         Scanner entrada = new Scanner(System.in);
         System.out.println("=====================================");
         System.out.println("Cadastrar um funcionario");
@@ -78,7 +78,7 @@ public class App {
 	    System.out.print("Informe seu departamento: ");
         String departamento = entrada.nextLine();
         Funcionario f = new Funcionario(matricula, nome, departamento );
-        if(cadastro.cadastraFuncionario(f)) System.out.println("Funcionario cadastrado com sucesso.");
+        if(Cadastro.cadastraFuncionario(f)) System.out.println("Funcionario cadastrado com sucesso.");
         else System.out.println("Erro: Funcionario não cadastrado.");
     }
 
@@ -99,7 +99,7 @@ public class App {
                         // AcessarComoFuncionario();
                         break;
                     case 2:
-                        // CadastrarNovoFuncionario();
+                        cadastrarNovoFuncionario();
                         break;
                     default: System.out.println("Selecione uma opção valida!");
                 }
