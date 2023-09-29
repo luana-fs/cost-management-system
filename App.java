@@ -363,5 +363,27 @@ public class App {
 
         return diaComMaisCustos;
     }
+public static int encontrarMesComMaiorCusto(double[] registroDeCusto) {
+        
+       
+if (registroDeCusto.length == 0)
+
+        int mesComMaiorCusto = 0;
+        double maiorCusto = registroDeCusto[0];
+
+        for (int i = 1; i < registroDeCusto.length; i++) {
+            if (registroDeCusto[i] > maiorCusto) {
+                maiorCusto = registroDeCusto[i];
+                mesComMaiorCusto = i;
+            }
+        }
+                maiorCusto = registroDeCusto[i];
+                mesComMaiorCusto = i;
+
+                maiorCusto = registroDeCusto[i];
+            
+return mesComMaiorCusto;
+    }
+}
 
 }
