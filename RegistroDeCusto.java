@@ -1,6 +1,6 @@
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RegistroDeCusto {
 
@@ -56,10 +56,52 @@ public class RegistroDeCusto {
         int i;
 		RegistroDeCusto reg = null;
         for(i=0; i< registrosDeCusto.size();i++){
+          
+        RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getDescricao().equalsIgnoreCase(descricao)){
+                return reg;
+
+        }
+		}
+		return null;
+		}
+      public RegistroDeCusto pesquisarCategoria(String categoria){
+		int i;
+		for(i=0; i< registrosDeCusto.size();i++){
+        RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getCategoria().equalsIgnoreCase(categoria)){
+                return reg;
+	  }
+
+}
+    return null;
+	  }
+	  public RegistroDeCusto pesquisarData(String data){
+		int i;
+		for(i=0; i< registrosDeCusto.size();i++){
+        RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getData().equals(data)){
+                return reg;
+	  }
+        }
+    return null;
+	  }
+	  public RegistroDeCusto pesquisarDepartamento(String departamento){
+		int i;
+		for(i=0; i< registrosDeCusto.size();i++){
+        RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getDepartamento().equals(departamento)){
+                return reg;
+	  }
+}
+    return null;
+	  }
+     
 			if(registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao)){
         		reg = registrosDeCusto.get(i);
 			}
 		}
 		return reg;
-	}
+	
 }
+  
