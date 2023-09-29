@@ -11,6 +11,14 @@ public class App {
   Departamento[] departamentos = new Departamento[6];
   registroDeCusto = new RegistroDeCusto(); 
 
+  RegistroDeCusto r1 = new RegistroDeCusto(100.0, "Material de Escritório", "2023-02-04", "Suprimentos", "Engenharia");
+  RegistroDeCusto r2 = new RegistroDeCusto(200.0, "Manutenção de Equipamento", "2022-09-20", "Manutenção", "Engenharia");
+  RegistroDeCusto r3 = new RegistroDeCusto(500.0, "Manutenção de Equipamento", "2023-08-27", "Manutenção", "Engenharia");
+
+    registroDeCusto.adicionarRegistroDeCusto(r1);
+    registroDeCusto.adicionarRegistroDeCusto(r2);
+    registroDeCusto.adicionarRegistroDeCusto(r3);
+
   //Estanciando os departamentos
   Departamento rh = new Departamento("RH");
   Departamento compras = new Departamento("Compras");
