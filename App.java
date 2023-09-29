@@ -204,5 +204,29 @@ public class App {
       System.out.println("RH: "+ percentualRh +"% "+"Compra: "+percentualCompra+"% "+"Venda: "+percentualVenda+"% "+"Expedição: "+percentualExpedicao+"% "+"Engenharia: "+percentualEngenharia+"% "+"Produção: "+percentualProducao+"% ");
 
     }
+     public static String diaComMaisCustos(RegistroDeCusto[] registros) {
+        Map<String, Integer> contagemPorDia = new HashMap<>();
+
+        for (RegistroDeCusto registro : registros) {
+            String data = registro.getData();
+            if (contagemPorDia.containsKey(data)) {
+                contagemPorDia.put(data, contagemPorDia.get(data)+1);
+            } else {
+                contagemPorDia.put(data,1);
+            }
+        }
+
+        String diaComMaisCustos = null;
+        int maxCustos = 0;
+
+        for (Map.Entry<String, Integer> entry : contagemPorDia.entrySet()) {
+            if (entry.getValue() > maxCustos) {
+                maxCustos = entry.getValue();
+                diaComMaisCustos = entry.getKey();
+            }
+        }
+
+        return diaComMaisCustos;
+    }
 
 }
