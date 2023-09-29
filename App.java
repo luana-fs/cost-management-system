@@ -67,7 +67,8 @@ public class App {
 
     }
   
-    private void cadastrarNovoFuncionario() {
+    private static void cadastrarNovoFuncionario() {
+        Scanner entrada = new Scanner(System.in);
         System.out.println("=====================================");
         System.out.println("Cadastrar um funcionario");
 	    System.out.print("Digite seu numero de matricula: ");
@@ -77,32 +78,31 @@ public class App {
 	    System.out.print("Informe seu departamento: ");
         String departamento = entrada.nextLine();
         Funcionario f = new Funcionario(matricula, nome, departamento );
-        if(cadastro.cadastraFuncionario(f))
-            System.out.println("Funcionario cadastrado com sucesso.");
-        else
-            System.out.println("Erro: Funcionario não cadastrado.");
+        if(Cadastro.cadastraFuncionario(f)) System.out.println("Funcionario cadastrado com sucesso.");
+        else System.out.println("Erro: Funcionario não cadastrado.");
     }
 
     private static boolean startupMenu() {
-        Scanner entrada = new Scanner(System.in);
-        int opcao = 0;
-        System.out.println("=====================================");
-        System.out.print("Olá! Seja bem vindo ao sistema de controle de custos da empresa!");
-        System.out.println("Selecione a forma de acesso:");
-        while(opcao != 1 && opcao != 2) {
-            System.out.println("[1] Funcionário");
-            System.out.println("[2] Administrador");
+        try (Scanner entrada = new Scanner(System.in)) {
+            int opcao = 0;
             System.out.println("=====================================");
-            opcao = entrada.nextInt();  
-            entrada.nextLine();
-            switch (opcao) {
-                case 1:
-                    // AcessarComoFuncionario();
-                    break;
-                case 2:
-                    // CadastrarNovoFuncionario();
-                    break;
-                default: System.out.println("Selecione uma opção valida!");
+            System.out.print("Olá! Seja bem vindo ao sistema de controle de custos da empresa!");
+            System.out.println("Selecione a forma de acesso:");
+            while(opcao != 1 && opcao != 2) {
+                System.out.println("[1] Funcionário");
+                System.out.println("[2] Administrador");
+                System.out.println("=====================================");
+                opcao = entrada.nextInt();  
+                entrada.nextLine();
+                switch (opcao) {
+                    case 1:
+                        // AcessarComoFuncionario();
+                        break;
+                    case 2:
+                        cadastrarNovoFuncionario();
+                        break;
+                    default: System.out.println("Selecione uma opção valida!");
+                }
             }
         }
         return true;
@@ -123,68 +123,69 @@ public class App {
     }
 
     public static void executar() {
-        Scanner entrada = new Scanner(System.in);
-        entrada.useLocale(Locale.ENGLISH);
-        boolean logado = false;
-        int opcao = 0;
+        try (Scanner entrada = new Scanner(System.in)) {
+            entrada.useLocale(Locale.ENGLISH);
+            boolean logado = false;
+            int opcao = 0;
 
-        while (logado == false) {
-            logado = startupMenu();
-        }
-
-        do {
-            menu();
-            System.out.print("Insira a opção desejada:");
-            opcao = entrada.nextInt();
-            entrada.nextLine();
-            switch (opcao) {
-                case 0: opcao = 0;
-                    break;
-                case 1:
-                    // RegistrarNovoCusto();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 2:
-                    // MostrarEstatisticas();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 3: 
-                    // PesquisarCusto();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 4:
-                    // VerDadosFuncionarioLogado();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 5:
-                    // VerCustosMes();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 6:
-                    // VerCustosTresMeses();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 7:
-                    // RankingFuncionarios();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                default:
-                    System.out.println("Selecione uma opção valida!");
+            while (logado == false) {
+                logado = startupMenu();
             }
-        } while (opcao != 0);
+
+            do {
+                menu();
+                System.out.print("Digite uma opção válida:");
+                opcao = entrada.nextInt();
+                entrada.nextLine();
+                switch (opcao) {
+                    case 0: opcao = 0;
+                        break;
+                    case 1:
+                        // RegistrarNovoCusto();
+                        menu();
+                        opcao = entrada.nextInt();
+                        entrada.nextLine();
+                        break;
+                    case 2:
+                        // MostrarEstatisticas();
+                        menu();
+                        opcao = entrada.nextInt();
+                        entrada.nextLine();
+                        break;
+                    case 3: 
+                        // PesquisarCusto();
+                        menu();
+                        opcao = entrada.nextInt();
+                        entrada.nextLine();
+                        break;
+                    case 4:
+                        // VerDadosFuncionarioLogado();
+                        menu();
+                        opcao = entrada.nextInt();
+                        entrada.nextLine();
+                        break;
+                    case 5:
+                        // VerCustosMes();
+                        menu();
+                        opcao = entrada.nextInt();
+                        entrada.nextLine();
+                        break;
+                    case 6:
+                        // VerCustosTresMeses();
+                        menu();
+                        opcao = entrada.nextInt();
+                        entrada.nextLine();
+                        break;
+                    case 7:
+                        // RankingFuncionarios();
+                        menu();
+                        opcao = entrada.nextInt();
+                        entrada.nextLine();
+                        break;
+                    default:
+                        System.out.println("Selecione uma opção válida, por favor!");
+                }
+            } while (opcao != 0);
+        }
     }
 }
