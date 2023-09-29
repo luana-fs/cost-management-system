@@ -1,44 +1,40 @@
 public class Funcionario {
 
-	private String matricula;
+	private int matricula;
 
 	private String nome;
 
-	private Departamento departamento;
+	private String departamento;
 
-	public Funcionario(String matricula, String nome, Departamento departamento)
+	public Funcionario(int matricula, String nome, String departamento)
 	{
 		this.matricula = matricula;
 		this.nome = nome;
 		this.departamento = departamento;
 	}
 
-	public String getMatricula() {
-		return null;
+	public int getMatricula() {
+		return matricula;
 	}
 
-	public void setMatricula(String matricula) {
-
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
 	}
 
 	public String getNome() {
-		return null;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-
+		this.nome = nome;
 	}
 
-	public String getDepartamentoFuncionario() {
-		return null;
+	public String getDepartamento(String departamento) {
+		return departamento;
 	}
 
-	public void setDepartamentoFuncionario() {
-
-	}
-
-	public String toString() {
-		return null;
+	public void setDepartamento() {
+		this.departamento = departamento;
 	}
 
 }

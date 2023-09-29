@@ -21,8 +21,8 @@ public class RegistroDeCusto {
 	}
 	
     public void adicionarRegistroDeCusto(RegistroDeCusto registro) {
-    registrosDeCusto.add(registro);
-}
+		registrosDeCusto.add(registro);
+	}
 
 	public double getValor() {
 		return this.valor;
@@ -54,7 +54,9 @@ public class RegistroDeCusto {
 
     public RegistroDeCusto pesquisaDescricao(String descricao){ 
         int i;
+		RegistroDeCusto reg = null;
         for(i=0; i< registrosDeCusto.size();i++){
+          
         RegistroDeCusto reg = registrosDeCusto.get(i);
            if(reg.getDescricao().equalsIgnoreCase(descricao)){
                 return reg;
@@ -95,5 +97,11 @@ public class RegistroDeCusto {
     return null;
 	  }
      
+			if(registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao)){
+        		reg = registrosDeCusto.get(i);
+			}
+		}
+		return reg;
+	
 }
   
