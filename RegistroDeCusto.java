@@ -9,7 +9,7 @@ public class RegistroDeCusto {
 	private String categoria;
 	private String departamento;
 
-    private List<Registro> registrosDeCusto = new ArrayList<>();
+    private List<RegistroDeCusto> registrosDeCusto = new ArrayList<>();
 
 	public RegistroDeCusto(double valor, String descricao, String data, String categoria, String departamento) {
 		this.valor = valor;
@@ -51,20 +51,16 @@ public class RegistroDeCusto {
 				+ "Departamento: " + this.getDepartamento() + "\n";
 	}
 
-    public Registro pesquisaDescricao(String descricao){ 
+    public RegistroDeCusto pesquisaDescricao(String descricao){ 
         int i;
-
         for(i=0; i< registrosDeCusto.size();i++){
-
-            Registro reg = registrosDeCusto.get(i);
-
-            if(reg.getDescricao.equals(descricao)){
-
+        RegistroDeCusto reg = registrosDeCusto.get(i);
+           if(reg.getDescricao().equalsIgnoreCase(descricao)){
                 return reg;
-
-            }
 
         }
 
 
+}
+  
 }
