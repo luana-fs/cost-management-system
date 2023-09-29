@@ -72,7 +72,7 @@ public class App {
         System.out.println("Menu de opcoes: ");
         System.out.println("[0] Sair do sistema");
         System.out.println("[1] Acessar");
-        System.out.println("[2] Adicionar novo funcionário");
+        System.out.println("[2] Registrar novo colaborador");
         System.out.println("[3] Pesquisar registros de custo");
         System.out.println("=====================================");
     }
@@ -84,7 +84,8 @@ public class App {
         int opcao = 0;
         do {
             menu();
-            System.out.print("Insira a opção desejada:");
+            System.out.print("Escolha uma opção válida!");
+            System.out.print("Digite a opção escolhida:")
             opcao = entrada.nextInt();
             entrada.nextLine();
             switch (opcao) {
@@ -97,7 +98,7 @@ public class App {
                     // CadastrarNovoFuncionario();
                     break;
                 default:
-                    System.out.println("Selecione uma opção valida!");
+                    System.out.println("Selecione uma opção válida, por favor!");
             }
         } while (opcao != 0);
     }
