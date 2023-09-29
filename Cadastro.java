@@ -6,7 +6,7 @@ public class Cadastro {
 
     public Cadastro() {funcionarios = new ArrayList<Funcionario>(10);}
 
-    public boolean cadastraFuncionario(Funcionario f) { return robos.add(f);}
+    public boolean cadastraFuncionario(Funcionario f) { return funcionarios.add(f);}
 
     
 }
