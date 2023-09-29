@@ -11,6 +11,7 @@ public class App {
     public static void main(String[] args) {
 
         Cadastro cadastro = new Cadastro();
+
         RegistroDeCusto r1 = new RegistroDeCusto(100.0, "Material de Escritório", "2023-02-04", "Suprimentos",
                 "Engenharia");
         RegistroDeCusto r2 = new RegistroDeCusto(200.0, "Manutenção de Equipamento", "2022-09-20", "Manutenção",
@@ -21,7 +22,7 @@ public class App {
         registroDeCusto.adicionarRegistroDeCusto(r1);
         registroDeCusto.adicionarRegistroDeCusto(r2);
         registroDeCusto.adicionarRegistroDeCusto(r3);
-
+        
         // Preenche Funcionários
         cadastro.cadastraFuncionario(new Funcionario(1, "Joao", "RH"));
         cadastro.cadastraFuncionario(new Funcionario(2, "Lucca", "Compras"));
@@ -92,6 +93,7 @@ public class App {
             if (dep[i] == null) {
                 dep[i] = d;
                 return true;
+
             }
         }
         return false;
@@ -104,6 +106,7 @@ public class App {
             contador++;
         }
     }
+
 
     private static void executarPesquisa(String opcao) {
         Scanner entrada = new Scanner(System.in);
@@ -145,7 +148,9 @@ public class App {
             case "4":
                 System.out.print("Digite o departamento o departamento: ");
                 String departamento = entrada.nextLine();
+
                 List<RegistroDeCusto> resultadoDepartamento = (List<RegistroDeCusto>) registroDeCusto.pesquisarDepartamento(departamento);
+                
                 if (resultadoDepartamento != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoDepartamento.toString());
                 } else {
@@ -156,4 +161,48 @@ public class App {
                 System.out.println("Selecione uma opção válida.");
         }
     }
+    public void percentualCustoPorDep(){
+         int percentualRh;
+        int percentualCompra;
+        int percentualVenda;
+        int percentualExpedicao;
+        int percentualEngenharia;
+        int percentualProducao;
+        int contRh;
+        int contCompra;
+        int contVenda;
+        int contExpedicao;
+        int contEngenharia;
+        int contProducao;
+        for(int i=0; i<departamentos.length; i++){
+            if(departamentos[i].getNome == "RH"){
+                contRh += 1;
+            }
+            if(departamentos[i].getNome == "Compra"){
+                contCompra += 1;
+            }
+            if(departamentos[i].getNome == "Venda"){
+                contVenda += 1;
+            }
+            if(departamentos[i].getNome == "Expedição"){
+                contExpedicao += 1;
+            }
+            if(departamentos[i].getNome == "Engenharia"){
+                contEngenharia += 1;
+            }
+            if(departamentos[i].getNome == "Produção"){
+                contProducao += 1;
+            }
+        }
+        percentualRh = (contRh*departamentos.length)/100; 
+        percentualCompra = (contCompra*departamentos.length)/100;
+        percentualVenda = (contVenda*departamentos.length)/100;
+        percentualExpedicao = (contExpedicao*departamentos.length)/100;
+        percentualProducao = (contProducao*departamentos.length)/100;
+        percentualEngenharia = (contEngenharia*departamentos.length)/100;
+
+      System.out.println("RH: "+ percentualRh +"% "+"Compra: "+percentualCompra+"% "+"Venda: "+percentualVenda+"% "+"Expedição: "+percentualExpedicao+"% "+"Engenharia: "+percentualEngenharia+"% "+"Produção: "+percentualProducao+"% ");
+
+    }
+
 }
