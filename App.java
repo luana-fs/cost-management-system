@@ -95,11 +95,26 @@ public class App {
                     // AcessarComoFuncionario();
                     break;
                 case 2:
-                    // CadastrarNovoFuncionario();
+                    CadastrarNovoFuncionario();
                     break;
                 default:
                     System.out.println("Selecione uma opção válida, por favor!");
             }
         } while (opcao != 0);
+    }
+    private void cadastrarNovoFuncionario() {
+        System.out.println("=====================================");
+        System.out.println("Cadastrar um funcionario");
+	    System.out.print("Digite seu numero de matricula: ");
+        int matricula = entrada.nextInt();
+        System.out.print("Informe seu nome: ");
+        String nome = entrada.nextLine();
+	    System.out.print("Informe seu departamento: ");
+        String departamento = entrada.nextLine();
+        Funcionario f = new Funcionario(matricula, nome, departamento );
+        if(cadastro.cadastraFuncionario(f))
+            System.out.println("Funcionario cadastrado com sucesso.");
+        else
+            System.out.println("Erro: Funcionario não cadastrado.");
     }
 }
