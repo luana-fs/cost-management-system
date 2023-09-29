@@ -73,7 +73,6 @@ public class RegistroDeCusto {
 			if (reg.getCategoria().equalsIgnoreCase(categoria)) {
 				resultados.add(reg);
 			}
-
 		}
 		return resultados;
 	}
@@ -93,17 +92,19 @@ public class RegistroDeCusto {
 	public List<RegistroDeCusto> pesquisarDepartamento(String departamento) {
 		int i;
 		List<RegistroDeCusto> resultados = new ArrayList<>();
-
 		for (i = 0; i < registrosDeCusto.size(); i++) {
 			RegistroDeCusto reg = registrosDeCusto.get(i);
 			if (reg.getDepartamento().equals(departamento)) {
 				resultados.add(reg);
-				return resultados;
-			} else {
-				if (registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao))
-					reg = registrosDeCusto.get(i);
-				return reg;
 			}
 		}
+		return resultados;
 	}
+
+	// if(registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao)){
+	// reg = registrosDeCusto.get(i);
+	// }
+	// }
+	// return reg;
+
 }

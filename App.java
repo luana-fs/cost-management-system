@@ -145,7 +145,7 @@ public class App {
             case "4":
                 System.out.print("Digite o departamento o departamento: ");
                 String departamento = entrada.nextLine();
-                List<RegistroDeCusto> resultadoDepartamento = registroDeCusto.pesquisarDepartamento(departamento);
+                List<RegistroDeCusto> resultadoDepartamento = (List<RegistroDeCusto>) registroDeCusto.pesquisarDepartamento(departamento);
                 if (resultadoDepartamento != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoDepartamento.toString());
                 } else {
