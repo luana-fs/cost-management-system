@@ -13,12 +13,12 @@ public class Funcionario {
 		this.departamento = departamento;
 	}
 
-	public String getMatricula() {
+	public int getMatricula() {
 		return matricula;
 	}
 
 	public void setMatricula(int matricula) {
-		this.matricula = matricula
+		this.matricula = matricula;
 	}
 
 	public String getNome() {
@@ -26,7 +26,7 @@ public class Funcionario {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome
+		this.nome = nome;
 	}
 
 	public String getDepartamento(String departamento) {
@@ -34,7 +34,7 @@ public class Funcionario {
 	}
 
 	public void setDepartamento() {
-		this.departamento = departamento
+		this.departamento = departamento;
 	}
 
 }
