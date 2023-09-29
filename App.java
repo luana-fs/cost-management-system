@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -114,7 +115,7 @@ public class App {
             case "1":
                 System.out.print("Digite a descrição que deseja pesquisar: ");
                 String descricao = entrada.nextLine();
-                RegistroDeCusto resultadoDescricao = registroDeCusto.pesquisaDescricao(descricao);
+                List<RegistroDeCusto> resultadoDescricao = registroDeCusto.pesquisaDescricao(descricao);
                 if (resultadoDescricao != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoDescricao.toString());
                 } else {
@@ -124,7 +125,7 @@ public class App {
             case "2":
                 System.out.print("Digite a categoria que deseja pesquisar: ");
                 String categoria = entrada.nextLine();
-                RegistroDeCusto resultadoCategoria = registroDeCusto.pesquisarCategoria(categoria);
+                List<RegistroDeCusto> resultadoCategoria = registroDeCusto.pesquisarCategoria(categoria);
                 if (resultadoCategoria != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoCategoria.toString());
                 } else {
@@ -134,7 +135,7 @@ public class App {
             case "3":
                 System.out.print("Digite a data que deseja pesquisar: ");
                 String data = entrada.nextLine();
-                RegistroDeCusto resultadoData = registroDeCusto.pesquisarData(data);
+                List<RegistroDeCusto> resultadoData = registroDeCusto.pesquisarData(data);
                 if (resultadoData != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoData.toString());
                 } else {
@@ -144,7 +145,7 @@ public class App {
             case "4":
                 System.out.print("Digite o departamento o departamento: ");
                 String departamento = entrada.nextLine();
-                RegistroDeCusto resultadoDepartamento = registroDeCusto.pesquisarDepartamento(departamento);
+                List<RegistroDeCusto> resultadoDepartamento = registroDeCusto.pesquisarDepartamento(departamento);
                 if (resultadoDepartamento != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoDepartamento.toString());
                 } else {
@@ -155,5 +156,4 @@ public class App {
                 System.out.println("Selecione uma opção válida.");
         }
     }
-
 }

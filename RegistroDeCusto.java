@@ -52,7 +52,7 @@ public class RegistroDeCusto {
 				+ "Departamento: " + this.getDepartamento() + "\n";
 	}
 
-	public RegistroDeCusto pesquisaDescricao(String descricao) {
+	public List<RegistroDeCusto> pesquisaDescricao(String descricao) {
 		int i;
 		List<RegistroDeCusto> resultados = new ArrayList<>();
 		for (i = 0; i < registrosDeCusto.size(); i++) {
@@ -62,10 +62,10 @@ public class RegistroDeCusto {
 
 			}
 		}
-		return (RegistroDeCusto) resultados;
+		return resultados;
 	}
 
-	public RegistroDeCusto pesquisarCategoria(String categoria) {
+	public List<RegistroDeCusto> pesquisarCategoria(String categoria) {
 		int i;
 		List<RegistroDeCusto> resultados = new ArrayList<>();
 		for (i = 0; i < registrosDeCusto.size(); i++) {
@@ -75,10 +75,10 @@ public class RegistroDeCusto {
 			}
 
 		}
-		return (RegistroDeCusto) resultados;
+		return resultados;
 	}
 
-	public RegistroDeCusto pesquisarData(String data) {
+	public List<RegistroDeCusto> pesquisarData(String data) {
 		int i;
 		List<RegistroDeCusto> resultados = new ArrayList<>();
 		for (i = 0; i < registrosDeCusto.size(); i++) {
@@ -87,23 +87,23 @@ public class RegistroDeCusto {
 				resultados.add(reg);
 			}
 		}
-		return (RegistroDeCusto) resultados;
+		return resultados;
 	}
 
-	public RegistroDeCusto pesquisarDepartamento(String departamento){
+	public List<RegistroDeCusto> pesquisarDepartamento(String departamento) {
 		int i;
 		List<RegistroDeCusto> resultados = new ArrayList<>();
-		for(i=0; i< registrosDeCusto.size();i++){
-			RegistroDeCusto reg = registrosDeCusto.get(i);
-           if(reg.getDepartamento().equals(departamento)){
-                 resultados.add(reg);
-	  }
-}
-    return (RegistroDeCusto) resultados;
-	}
 
-	if(registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao)){
-		reg = registrosDeCusto.get(i);
-		return reg;
+		for (i = 0; i < registrosDeCusto.size(); i++) {
+			RegistroDeCusto reg = registrosDeCusto.get(i);
+			if (reg.getDepartamento().equals(departamento)) {
+				resultados.add(reg);
+				return resultados;
+			} else {
+				if (registrosDeCusto.get(i).getDescricao().equalsIgnoreCase(descricao))
+					reg = registrosDeCusto.get(i);
+				return reg;
+			}
+		}
 	}
 }
