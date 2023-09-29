@@ -9,7 +9,7 @@ public class RegistroDeCusto {
 	private String categoria;
 	private String departamento;
 
-   private List<Registro> registrosDeCusto = new ArrayList<>();
+    private List<Registro> registrosDeCusto = new ArrayList<>();
 
 	public RegistroDeCusto(double valor, String descricao, String data, String categoria, String departamento) {
 		this.valor = valor;
@@ -18,6 +18,10 @@ public class RegistroDeCusto {
 		this.categoria = categoria;
 		this.departamento = departamento;
 	}
+	
+    public void adicionarRegistroDeCusto(RegistroDeCusto registro) {
+    registrosDeCusto.add(registro);
+}
 
 	public double getValor() {
 		return this.valor;
