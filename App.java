@@ -85,6 +85,25 @@ public class App {
         Departamento expedicao = new Departamento("Expedição");
         Departamento engenharia = new Departamento("Engenharia");
         Departamento producao = new Departamento("Produção");
+
+        // Populando o array
+        App.insereDep(departamentos, rh);
+        App.insereDep(departamentos, compras);
+        App.insereDep(departamentos, vendas);
+        App.insereDep(departamentos, expedicao);
+        App.insereDep(departamentos, engenharia);
+        App.insereDep(departamentos, producao);
+
+        App.imprimeDep(departamentos);
+        
+       // startupMenu()
+        menu();
+        executar();
+
+        // // Exemplo de novo cadastro de custo
+        // RegistroDeCusto reg1 = new RegistroDeCusto(3559.80, "Notebook", "26/09/2023",
+        // "Eletrônicos", "Compras");
+        // System.out.println(reg1.toString());
     }
 
     // Populando o array
@@ -132,7 +151,7 @@ public class App {
             System.out.println("Selecione a forma de acesso:");
             while (opcao != 1 && opcao != 2) {
                 System.out.println("[1] Funcionário");
-                System.out.println("[2] Administrador");
+               // System.out.println("[2] Administrador");
                 System.out.println("=====================================");
                 opcao = entrada.nextInt();
                 entrada.nextLine();
@@ -161,7 +180,7 @@ public class App {
         System.out.println("[5] Visualizar custos do mês");
         System.out.println("[6] Vizualizar custos dos últimos 3 meses");
         System.out.println("[7] Top 3 funcionários com maiores registros");
-        System.out.println("[8] Dia com o maior custo";)
+        System.out.println("[8] Percentual de custos por Departamento:");
         System.out.println("[0] Sair do sistema");
         System.out.println("=====================================");
     }
@@ -177,25 +196,25 @@ public class App {
                     opcao = 0;
                     break;
                 case 1:
-                    // RegistrarNovoCusto();
+                     RegistrarNovoCusto();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 2:
-                    // MostrarEstatisticas();
+                     MostrarEstatisticas();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 3:
-                    // PesquisarCusto();
+                     PesquisarCusto();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 4:
-                    // VerDadosFuncionarioLogado();
+                    VerDadosFuncionarioLogado();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
@@ -218,9 +237,9 @@ public class App {
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
-                case 8:
-                    // diaComMaisCustos();
-                    menu();
+                    case 8:
+                        percentualCustoPorDep();
+                        menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
@@ -229,7 +248,7 @@ public class App {
             }
         } while (opcao != 0);
     }
-
+                
     private static void menuPesquisa() {
         System.out.println("=====================================");
         System.out.println("Menu de Pesquisa: ");
@@ -339,51 +358,3 @@ public class App {
       System.out.println("RH: "+ percentualRh +"% "+"Compra: "+percentualCompra+"% "+"Venda: "+percentualVenda+"% "+"Expedição: "+percentualExpedicao+"% "+"Engenharia: "+percentualEngenharia+"% "+"Produção: "+percentualProducao+"% ");
 
     }
-     public static String diaComMaisCustos(RegistroDeCusto[] registros) {
-        Map<String, Integer> contagemPorDia = new HashMap<>();
-
-        for (RegistroDeCusto registro : registros) {
-            String data = registro.getData();
-            if (contagemPorDia.containsKey(data)) {
-                contagemPorDia.put(data, contagemPorDia.get(data)+1);
-            } else {
-                contagemPorDia.put(data,1);
-            }
-        }
-
-        String diaComMaisCustos = null;
-        int maxCustos = 0;
-
-        for (Map.Entry<String, Integer> entry : contagemPorDia.entrySet()) {
-            if (entry.getValue() > maxCustos) {
-                maxCustos = entry.getValue();
-                diaComMaisCustos = entry.getKey();
-            }
-        }
-
-        return diaComMaisCustos;
-    }
-public static int encontrarMesComMaiorCusto(double[] registroDeCusto) {
-        
-       
-if (registroDeCusto.length == 0)
-
-        int mesComMaiorCusto = 0;
-        double maiorCusto = registroDeCusto[0];
-
-        for (int i = 1; i < registroDeCusto.length; i++) {
-            if (registroDeCusto[i] > maiorCusto) {
-                maiorCusto = registroDeCusto[i];
-                mesComMaiorCusto = i;
-            }
-        }
-                maiorCusto = registroDeCusto[i];
-                mesComMaiorCusto = i;
-
-                maiorCusto = registroDeCusto[i];
-            
-return mesComMaiorCusto;
-    }
-}
-
-}

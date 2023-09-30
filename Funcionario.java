@@ -32,7 +32,7 @@ public class Funcionario {
 		return departamento;
 	}
 
-	public void setDepartamento(String departamento) {
+	public void setDepartamento() {
 		this.departamento = departamento;
 	}
 
