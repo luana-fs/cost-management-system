@@ -193,7 +193,7 @@ public class App {
             }
         } while (opcao != 0);
     }
-
+                
     private static void menuPesquisa() {
         System.out.println("=====================================");
         System.out.println("Menu de Pesquisa: ");
@@ -299,5 +299,4 @@ public class App {
       System.out.println("RH: "+ percentualRh +"% "+"Compra: "+percentualCompra+"% "+"Venda: "+percentualVenda+"% "+"Expedição: "+percentualExpedicao+"% "+"Engenharia: "+percentualEngenharia+"% "+"Produção: "+percentualProducao+"% ");
 
     }
-
 }
