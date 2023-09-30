@@ -373,6 +373,3 @@ public class App {
         registroDeCusto.adicionarRegistroDeCusto(regi);
     }
 }
-
-
-

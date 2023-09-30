@@ -1,7 +1,4 @@
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 public class Menu {
 
@@ -48,6 +45,4 @@ public class Menu {
         System.out.println("[0] Voltar ao menu principal");
         System.out.println("=====================================");
     }
-
-
 }
