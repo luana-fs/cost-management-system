@@ -1,7 +1,4 @@
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 public class Menu {
 
@@ -23,19 +20,18 @@ public class Menu {
     }
 
     public static void exibirMenu() {
-        System.out.println ("\n");
         System.out.println("=====================================");
-        System.out.println("Menu de Opções: ");
-        System.out.println("[1] Registrar Novo Custo");
-        System.out.println("[2] Mostrar Estatísticas");
-        System.out.println("[3] Pesquisar Custo");
-        System.out.println("[4] Visualizar Dados Pessoais");
-        System.out.println("[5] Visualizar Custos do Mês");
-        System.out.println("[6] Visualizar Custos dos Últimos 3 Meses");
-        System.out.println("[7] Top 3 Funcionários com Maiores Registros");
-        System.out.println("[0] Sair do Sistema");
+        System.out.println("Menu de opcoes: ");
+        System.out.println("[1] Registrar novo custo");
+        System.out.println("[2] Pesquisar custo");
+        System.out.println("[3] Visualizar dados pessoais");
+        System.out.println("[4] Visualizar custos do mês");
+        System.out.println("[5] Vizualizar custos dos últimos 3 meses");
+        System.out.println("[6] Top 3 funcionários com maiores registros");
+        System.out.println("[7] Dia com o maior custo");
+        System.out.println("[8] Percentual de custo por departamento");
+        System.out.println("[0] Sair do sistema");
         System.out.println("=====================================");
-        System.out.print("Digite uma opção: ");
     }
 
     public static void menuPesquisa() {
@@ -49,6 +45,4 @@ public class Menu {
         System.out.println("[0] Voltar ao menu principal");
         System.out.println("=====================================");
     }
-
-
 }

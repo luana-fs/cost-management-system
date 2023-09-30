@@ -1,28 +1,30 @@
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.*;
 
 public class App {
-
     private static Funcionario funcionarioLogado;
     private static Departamento[] departamentos = new Departamento[6];
-    private static RegistroDeCusto registroDeCusto;
+    private static RegistroDeCusto registroDeCusto = new RegistroDeCusto();
+    private static Cadastro cadastro = new Cadastro();
+    private static ListaDepartamentos listaDep = new ListaDepartamentos();
 
     public static void main(String[] args) {
 
-        Cadastro cadastro = new Cadastro();
+        // Cadastro cadastro = new Cadastro();
 
-        RegistroDeCusto r1 = new RegistroDeCusto(100.0, "Material de Escritório", "2023-02-04", "Suprimentos",
+        RegistroDeCusto r1 = new RegistroDeCusto(100.0, "Impressora", "2023-02-04", "Suprimentos",
                 "Engenharia");
-        RegistroDeCusto r2 = new RegistroDeCusto(200.0, "Manutenção de Equipamento", "2022-09-20", "Manutenção",
+        RegistroDeCusto r2 = new RegistroDeCusto(200.0, "Computador", "2022-09-20", "Manutenção",
                 "Engenharia");
-        RegistroDeCusto r3 = new RegistroDeCusto(500.0, "Manutenção de Equipamento", "2023-08-27", "Manutenção",
+        RegistroDeCusto r3 = new RegistroDeCusto(500.0, "Material de limpeza", "2023-08-27", "Manutenção",
                 "Engenharia");
 
         registroDeCusto.adicionarRegistroDeCusto(r1);
         registroDeCusto.adicionarRegistroDeCusto(r2);
         registroDeCusto.adicionarRegistroDeCusto(r3);
-        
+
         // Preenche Funcionários
         cadastro.cadastraFuncionario(new Funcionario(1, "Joao", "RH"));
         cadastro.cadastraFuncionario(new Funcionario(2, "Lucca", "Compras"));
@@ -47,9 +49,10 @@ public class App {
         System.out.println("Logado como: " + funcionarioLogado.getNome());
 
         // Menu
-        Menu.exibirMenu();
+       // Menu.exibirMenu();
+        executar();
         int opcao;
-        do {
+        /*do {
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
@@ -72,7 +75,7 @@ public class App {
                     Menu.exibirMenu();
                     break;
             }
-        } while (opcao != 0);
+        } while (opcao != 0);*/
 
         scanner.close();
     }
@@ -86,24 +89,12 @@ public class App {
         Departamento engenharia = new Departamento("Engenharia");
         Departamento producao = new Departamento("Produção");
 
-        // Populando o array
-        App.insereDep(departamentos, rh);
-        App.insereDep(departamentos, compras);
-        App.insereDep(departamentos, vendas);
-        App.insereDep(departamentos, expedicao);
-        App.insereDep(departamentos, engenharia);
-        App.insereDep(departamentos, producao);
-
-        App.imprimeDep(departamentos);
-        
-       // startupMenu()
-        menu();
-        executar();
-
-        // // Exemplo de novo cadastro de custo
-        // RegistroDeCusto reg1 = new RegistroDeCusto(3559.80, "Notebook", "26/09/2023",
-        // "Eletrônicos", "Compras");
-        // System.out.println(reg1.toString());
+        listaDep.add(rh);
+        listaDep.add(compras);
+        listaDep.add(vendas);
+        listaDep.add(expedicao);
+        listaDep.add(engenharia);
+        listaDep.add(producao);
     }
 
     // Populando o array
@@ -119,15 +110,13 @@ public class App {
     }
 
     public static void imprimeDep(Departamento[] dep) {
-        int contador = 1;
-        for (int i = 0; i < dep.length; i++) {
-            System.out.println(contador + ": " + dep[i]);
-            contador++;
-        }
+        listaDep.listarDepartamentos();
     }
 
 
     private static void cadastrarNovoFuncionario() {
+      //  Cadastro cadastro = new Cadastro();
+        Scanner entrada = new Scanner(System.in);
         System.out.println("=====================================");
         System.out.println("Cadastrar um funcionario");
         System.out.print("Digite seu numero de matricula: ");
@@ -137,7 +126,7 @@ public class App {
         System.out.print("Informe seu departamento: ");
         String departamento = entrada.nextLine();
         Funcionario f = new Funcionario(matricula, nome, departamento);
-        if (Cadastro.cadastraFuncionario(f))
+        if (cadastro.cadastraFuncionario(f))
             System.out.println("Funcionario cadastrado com sucesso.");
         else
             System.out.println("Erro: Funcionario não cadastrado.");
@@ -151,10 +140,10 @@ public class App {
             System.out.println("Selecione a forma de acesso:");
             while (opcao != 1 && opcao != 2) {
                 System.out.println("[1] Funcionário");
-               // System.out.println("[2] Administrador");
+                System.out.println("[2] Administrador");
                 System.out.println("=====================================");
                 opcao = entrada.nextInt();
-                entrada.nextLine();
+                //entrada.nextLine();
                 switch (opcao) {
                     case 1:
                         // AcessarComoFuncionario();
@@ -174,18 +163,21 @@ public class App {
         System.out.println("=====================================");
         System.out.println("Menu de opcoes: ");
         System.out.println("[1] Registrar novo custo");
-        System.out.println("[2] Mostrar estatísticas");
-        System.out.println("[3] Pesquisar custo");
-        System.out.println("[4] Visualizar dados pessoais");
-        System.out.println("[5] Visualizar custos do mês");
-        System.out.println("[6] Vizualizar custos dos últimos 3 meses");
-        System.out.println("[7] Top 3 funcionários com maiores registros");
-        System.out.println("[8] Percentual de custos por Departamento:");
+        System.out.println("[2] Pesquisar custo");
+       System.out.println("[3] Visualizar dados pessoais");
+       System.out.println("[4] Visualizar custos do mês");
+       System.out.println("[5] Vizualizar custos dos últimos 3 meses");
+        System.out.println("[6] Top 3 funcionários com maiores registros");
+       System.out.println("[7] Dia com o maior custo");
+        System.out.println("[8] Percentual de custo por departamento");
         System.out.println("[0] Sair do sistema");
         System.out.println("=====================================");
     }
 
     public static void executar() {
+        Menu.exibirMenu();
+
+        Scanner entrada = new Scanner(System.in);
         int opcao = entrada.nextInt();
         do {
             menu();
@@ -196,60 +188,64 @@ public class App {
                     opcao = 0;
                     break;
                 case 1:
-                     RegistrarNovoCusto();
+                    RegistrarNovoCusto();
                     menu();
                     opcao = entrada.nextInt();
-                    entrada.nextLine();
+                    //.nextLine();
                     break;
                 case 2:
-                     MostrarEstatisticas();
+                    menuPesquisa();
                     menu();
                     opcao = entrada.nextInt();
-                    entrada.nextLine();
+                   // entrada.nextLine();
                     break;
                 case 3:
-                     PesquisarCusto();
+                    // VerDadosFuncionarioLogado();
+                    menuPesquisa();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
                 case 4:
-                    VerDadosFuncionarioLogado();
-                    menu();
-                    opcao = entrada.nextInt();
-                    entrada.nextLine();
-                    break;
-                case 5:
                     // VerCustosMes();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
-                case 6:
+                case 5:
                     // VerCustosTresMeses();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
-                case 7:
+                case 6:
                     // RankingFuncionarios();
                     menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
-                    case 8:
-                        percentualCustoPorDep();
-                        menu();
+                case 7:
+                    // diaComMaisCustos();
+                    menu();
                     opcao = entrada.nextInt();
                     entrada.nextLine();
                     break;
+                case 8:
+                    registroDeCusto.percentualCustoPorDep();
+                   // menu();
+                   // opcao = entrada.nextInt();
+                   // entrada.nextLine();
+                    break;
+
                 default:
                     System.out.println("Selecione uma opção válida, por favor!");
             }
         } while (opcao != 0);
     }
-                
+
     private static void menuPesquisa() {
+        Scanner entrada = new Scanner(System.in);
+        String opcao="0";
         System.out.println("=====================================");
         System.out.println("Menu de Pesquisa: ");
         System.out.println("[1] Pesquisar por Descrição");
@@ -258,21 +254,21 @@ public class App {
         System.out.println("[4] Pesquisar por Departamento");
         System.out.println("[0] Voltar ao menu principal");
         System.out.println("=====================================");
+        opcao = entrada.nextLine();
+        executarPesquisa(opcao);
     }
-
-
-
     private static void executarPesquisa(String opcao) {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.ENGLISH);
-
+        List<RegistroDeCusto> resultadoDescricao = null;
+        List<RegistroDeCusto> resultadoCategoria=null;
         switch (opcao) {
             case "0":
                 break;
             case "1":
                 System.out.print("Digite a descrição que deseja pesquisar: ");
                 String descricao = entrada.nextLine();
-                List<RegistroDeCusto> resultadoDescricao = registroDeCusto.pesquisaDescricao(descricao);
+                resultadoDescricao = registroDeCusto.pesquisaDescricao(descricao);
                 if (resultadoDescricao != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoDescricao.toString());
                 } else {
@@ -282,7 +278,7 @@ public class App {
             case "2":
                 System.out.print("Digite a categoria que deseja pesquisar: ");
                 String categoria = entrada.nextLine();
-                List<RegistroDeCusto> resultadoCategoria = registroDeCusto.pesquisarCategoria(categoria);
+                 resultadoCategoria = registroDeCusto.pesquisarCategoria(categoria);
                 if (resultadoCategoria != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoCategoria.toString());
                 } else {
@@ -304,57 +300,76 @@ public class App {
                 String departamento = entrada.nextLine();
 
                 List<RegistroDeCusto> resultadoDepartamento = (List<RegistroDeCusto>) registroDeCusto.pesquisarDepartamento(departamento);
-                
+
                 if (resultadoDepartamento != null) {
                     System.out.println("Resultado da pesquisa:\n" + resultadoDepartamento.toString());
                 } else {
                     System.out.println("Nenhum resultado encontrado.");
                 }
-                break;    
+                break;
             default:
                 System.out.println("Selecione uma opção válida.");
         }
     }
-    public void percentualCustoPorDep(){
-         int percentualRh;
-        int percentualCompra;
-        int percentualVenda;
-        int percentualExpedicao;
-        int percentualEngenharia;
-        int percentualProducao;
-        int contRh;
-        int contCompra;
-        int contVenda;
-        int contExpedicao;
-        int contEngenharia;
-        int contProducao;
-        for(int i=0; i<departamentos.length; i++){
-            if(departamentos[i].getNome == "RH"){
-                contRh += 1;
-            }
-            if(departamentos[i].getNome == "Compra"){
-                contCompra += 1;
-            }
-            if(departamentos[i].getNome == "Venda"){
-                contVenda += 1;
-            }
-            if(departamentos[i].getNome == "Expedição"){
-                contExpedicao += 1;
-            }
-            if(departamentos[i].getNome == "Engenharia"){
-                contEngenharia += 1;
-            }
-            if(departamentos[i].getNome == "Produção"){
-                contProducao += 1;
+    public static String diaComMaisCustos(RegistroDeCusto[] registros) {
+        Map<String, Integer> contagemPorDia = new HashMap<>();
+
+        for (RegistroDeCusto registro : registros) {
+            String data = registro.getData();
+            if (contagemPorDia.containsKey(data)) {
+                contagemPorDia.put(data, contagemPorDia.get(data)+1);
+            } else {
+                contagemPorDia.put(data,1);
             }
         }
-        percentualRh = (contRh*departamentos.length)/100; 
-        percentualCompra = (contCompra*departamentos.length)/100;
-        percentualVenda = (contVenda*departamentos.length)/100;
-        percentualExpedicao = (contExpedicao*departamentos.length)/100;
-        percentualProducao = (contProducao*departamentos.length)/100;
-        percentualEngenharia = (contEngenharia*departamentos.length)/100;
 
-      System.out.println("RH: "+ percentualRh +"% "+"Compra: "+percentualCompra+"% "+"Venda: "+percentualVenda+"% "+"Expedição: "+percentualExpedicao+"% "+"Engenharia: "+percentualEngenharia+"% "+"Produção: "+percentualProducao+"% ");
+        String diaComMaisCustos = null;
+        int maxCustos = 0;
 
+        for (Map.Entry<String, Integer> entry : contagemPorDia.entrySet()) {
+            if (entry.getValue() > maxCustos) {
+                maxCustos = entry.getValue();
+                diaComMaisCustos = entry.getKey();
+            }
+        }
+
+        return diaComMaisCustos;
     }
+    public int encontrarMesComMaiorCusto(double[] registroDeCusto) {
+        int mesComMaiorCusto = 0;
+        if (registroDeCusto.length == 0) {
+            mesComMaiorCusto = 0;
+            double maiorCusto = registroDeCusto[0];
+            for (int i = 1; i < registroDeCusto.length; i++) {
+                if (registroDeCusto[i] > maiorCusto) {
+                    maiorCusto = registroDeCusto[i];
+                    mesComMaiorCusto = i;
+                }
+
+
+                maiorCusto = registroDeCusto[i];
+                mesComMaiorCusto = i;
+
+                maiorCusto = registroDeCusto[i];
+
+                // return mesComMaiorCusto;
+            }
+        } return mesComMaiorCusto;
+    }
+    public static void RegistrarNovoCusto(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Digite o valor do custo: ");
+        double valor = entrada.nextDouble();
+        entrada.nextLine();
+        System.out.println("Digite a descrição do custo: ");
+        String descricao = entrada.nextLine();
+        System.out.println("Digite a data do custo: ");
+        String data = entrada.nextLine();
+        System.out.println("Digite a categoria do custo: ");
+        String categoria = entrada.nextLine();
+        System.out.println("Digite o departamento do custo, sendo Rh, Produção, Engenharia, Expedição, Compras e Venda: ");
+        String dep = entrada.nextLine();
+        RegistroDeCusto regi = new RegistroDeCusto(valor,descricao, data,  categoria, dep);
+        registroDeCusto.adicionarRegistroDeCusto(regi);
+    }
+}

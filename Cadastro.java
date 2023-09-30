@@ -27,5 +27,5 @@ public class Cadastro {
         return funcionarios.get(indice);
     }
 
-    
+
 }
